@@ -28,7 +28,7 @@ jobs:
           mkdir -p www
           cp index.html www/
           cp manifest.json www/ || true
-          cp spacemath.png www/ || true
+          cp icon.png www/ || true
 
       - name: Install Capacitor & Android Project
         run: |
