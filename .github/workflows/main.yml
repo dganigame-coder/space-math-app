@@ -1,18 +1,18 @@
 name: Build Android APK
-on: [push] # בכל פעם שתעלה קוד, הוא יבנה אפליקציה חדשה
+on: [push]
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4 # עדכנתי גם פה לגרסה הכי חדשה
 
       - name: Setup Node.js
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v4 # עדכנתי גם פה לגרסה הכי חדשה
         with:
-          node-version: '16'
+          node-version: '20'
 
-      - name: Install Capacitor
+      - name: Install Dependencies
         run: |
           npm install @capacitor/core @capacitor/cli @capacitor/android
           npx cap init "SpaceMath" "com.spacemath.app" --web-dir .
@@ -22,7 +22,7 @@ jobs:
         run: npx cap copy android
 
       - name: Upload APK
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4 # זה התיקון החשוב!
         with:
           name: app-release
           path: android/app/build/outputs/apk/debug/app-debug.apk
