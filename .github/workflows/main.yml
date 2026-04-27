@@ -12,9 +12,16 @@ jobs:
         with:
           node-version: '20'
 
+      # זה השלב שפתור את השגיאה שקיבלת
+      - name: set up JDK 21
+        uses: actions/setup-java@v4
+        with:
+          java-version: '21'
+          distribution: 'temurin'
+
       - name: Prepare Web Directory
         run: |
-          mkdir www
+          mkdir -p www
           cp index.html www/
           cp manifest.json www/ || true
           cp spacemath.png www/ || true
@@ -29,6 +36,7 @@ jobs:
       - name: Build Debug APK
         run: |
           cd android
+          chmod +x gradlew
           ./gradlew assembleDebug
 
       - name: Upload APK
