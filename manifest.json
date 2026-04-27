@@ -4,13 +4,13 @@
   "description": "משחק למידת כפל חווייתי בחלל העמוק",
   "icons": [
   {
-    "src": "spacemath.png",
+    "src": "icon.png",
     "sizes": "192x192",
     "type": "image/png",
     "purpose": "any maskable"
   },
   {
-    "src": "spacemath.png",
+    "src": "icon.png",
     "sizes": "512x512",
     "type": "image/png"
   }],
