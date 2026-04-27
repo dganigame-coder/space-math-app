@@ -32,7 +32,6 @@ jobs:
           npx cap add android
           npx cap copy android
 
-      # תיקון הכפילויות של Kotlin (השלב הקריטי!)
       - name: Fix Kotlin Duplicate Classes
         run: |
           echo "android.useAndroidX=true" >> android/gradle.properties
@@ -44,9 +43,11 @@ jobs:
           cd android
           chmod +x gradlew
           ./gradlew assembleDebug
+          # שינוי שם הקובץ בתוך תיקיית הפלט
+          mv app/build/outputs/apk/debug/app-debug.apk app/build/outputs/apk/debug/spacemath.apk
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
-          name: app-release
-          path: android/app/build/outputs/apk/debug/app-debug.apk
+          name: spacemath-app-package # זה יהיה שם ה-ZIP שתוריד
+          path: android/app/build/outputs/apk/debug/spacemath.apk
